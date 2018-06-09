@@ -10,10 +10,10 @@ An *ansible role* that installs [Docker](https://docs.docker.com/) on Linux.
 
 The role may be configured by changing the following variables.
 
-    docker_compose_version: "1.21.2"
-    docker_compose_destination_path: /usr/local/bin/docker-compose
-
-Please see the [release notes](https://docs.docker.com/release-notes/docker-compose/) to choose the correct compose version for your docker engine version.
+    docker_edition: 'ce'
+    docker_repository_component: stable
+    docker_arch: amd64
+    docker_version:
 
 ## License
 
