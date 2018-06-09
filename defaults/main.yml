@@ -1,0 +1,18 @@
+---
+# Values for edition,'ce' (Community Edition) or 'ee' (Enterprise Edition)
+docker_edition: 'ce'
+docker_package: "docker-{{ docker_edition }}"
+
+# Values for component, 'stable' or 'edge'.
+docker_repository_component: stable
+
+docker_arch: amd64
+# Url of the repository which will be used to install docker.
+docker_repository_url: "deb [arch={{docker_arch}}] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} {{docker_repository_component}}"
+# Users which will be added to the docker group. Need to be a list.
+docker_users:
+  - "{{ansible_user_id}}"
+
+# Version of docker which will be installed. Leave empty to always get the latest.
+# When specifying a version make sure to use the string from your package manager.
+docker_version:

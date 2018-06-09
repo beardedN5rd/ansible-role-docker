@@ -1,0 +1,12 @@
+---
+
+- name: DOCKER | stop daemon
+  service:
+    name: docker
+    state: stopped
+  when: docker_remote_enabled
+
+- name: DOCKER | restart daemon
+  service:
+    name: docker
+    state: restarted

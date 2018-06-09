@@ -1,0 +1,10 @@
+---
+
+- name: DOCKER | install dependencies
+  apt:
+    cache_valid_time: 3600
+    name: "{{item}}"
+    state: present
+    update_cache: true
+  with_items:
+    - apt-transport-https

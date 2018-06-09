@@ -1,0 +1,33 @@
+---
+
+- name: DOCKER | add repository key
+  apt_key:
+    data: "{{lookup('file', 'docker-gpg')}}"
+    state: present
+
+- name: DOCKER | add repository
+  apt_repository:
+    filename: docker
+    repo: "{{docker_repository_url}}"
+    state: present
+
+- name: DOCKER | dpkg unhold before installation
+  dpkg_selections:
+    name: "{{docker_package}}"
+    selection: install
+  changed_when: false
+
+- name: DOCKER | install
+  apt:
+    allow_unauthenticated: no
+    force: yes
+    name: "{{docker_package}}{{docker_version|regex_replace('^(.*)', '=\\1')|regex_replace('=None', '')}}"
+    state: "{{(not docker_version)|ternary('latest', 'installed')}}"
+  notify:
+    - DOCKER | restart daemon
+
+- name: DOCKER | dpkg hold after installation
+  dpkg_selections:
+    name: "{{docker_package}}"
+    selection: hold
+  changed_when: false
