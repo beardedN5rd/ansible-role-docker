@@ -1,7 +1,8 @@
 ---
 # Values for edition,'ce' (Community Edition) or 'ee' (Enterprise Edition)
 docker_edition: 'ce'
-docker_package: "docker-{{ docker_edition }}"
+#docker_package: "docker-{{ docker_edition }}"
+docker_package: "docker.io"
 
 # Values for component, 'stable' or 'edge'.
 docker_repository_component: edge
