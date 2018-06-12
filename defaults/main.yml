@@ -4,7 +4,7 @@ docker_edition: 'ce'
 docker_package: "docker-{{ docker_edition }}"
 
 # Values for component, 'stable' or 'edge'.
-docker_repository_component: stable
+docker_repository_component: edge
 
 docker_arch: amd64
 # Url of the repository which will be used to install docker.
